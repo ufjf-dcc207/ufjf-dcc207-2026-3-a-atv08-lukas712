@@ -1,28 +1,16 @@
 import './Atributo.css'
-import { useState } from 'react';
+
 type AtributoProps = {
-  maxLifePoint: number;
-  lifePoint: number;
+  maxValue: number;
+  value: number;
   icon: string;
 };
 
-export default function Atributo({ maxLifePoint, lifePoint, icon }: AtributoProps) {
-    const [actualLifePoint, setLifePoint] = useState(lifePoint);
-
-    function increaseLifePoint() {
-        if (actualLifePoint < maxLifePoint) {
-            setLifePoint(actualLifePoint + 1);
-        }
-        else {
-            setLifePoint(0);
-        }
-    }
-
+export default function Atributo({ maxValue, value, icon }: AtributoProps) {
     return (
         <div className="atributo">
-            <span className="ativo">{icon.repeat(actualLifePoint)}</span>
-            <span className="inativo">{icon.repeat(maxLifePoint - actualLifePoint)}</span>
-            <button onClick={increaseLifePoint}>+</button>
+            <span className="ativo">{icon.repeat(value)}</span>
+            <span className="inativo">{icon.repeat(maxValue - value)}</span>
         </div>
     )
 }
